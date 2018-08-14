@@ -1,0 +1,5 @@
+Flask
+Flask-SQLALchemy
+Flask-WhooshAlchemyPlus
+PyMySQL
+jieba

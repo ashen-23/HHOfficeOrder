@@ -1,0 +1,121 @@
+
+body {
+  font: 14px "Century Gothic", Futura, sans-serif;
+  margin: 20px;
+}
+
+ol, ul {
+  padding-left: 30px;
+}
+
+
+.dropdown-list {
+    padding: 10px 10px;
+}
+
+.board-row:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.status {
+  margin-bottom: 10px;
+}
+
+.timepicker {
+    border: 0px;
+    float: left;
+    /*line-height: 70px;*/
+    margin-right: -1px;
+    margin-top: -1px;
+    padding: 20px;
+    text-align: center;
+    font-size: 100%;
+}
+
+button:focus {
+  outline: none;
+}
+
+/*.square:focus {*/
+  /*background: #ddd;*/
+/*}*/
+
+
+.linemargin {
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
+.mar_bottom_20 {
+    margin-bottom: 20px;
+}
+
+.mar_top_20 {
+    margin-top: 20px;
+}
+
+.normal {
+    color: #101010;
+    background: #fff;
+}
+
+.selected {
+    background-color: #00BEAF;
+    color: white;
+}
+
+.include {
+    background-color: #E8F9F7;
+    color: #33C4B7;
+}
+
+button:disabled {
+    color: #E8F9F7;
+    background-color: #d2d2d2;
+}
+
+
+.spliline {
+    background-color: #d2d2d2;
+    height: 2px;
+}
+
+.weak-select {
+    background-color: #92be2c;
+    color: black;
+}
+
+.max-width {
+    width: 65%;
+    margin: 0 auto;
+}
+
+
+.office-list {
+    border: 2px;
+    float: left;
+    margin-right: -1px;
+    margin-top: -1px;
+    padding: 8px;
+    text-align: center;
+    font-size: 100%;
+    min-width: 150px;
+}
+
+span.label-info-font {
+    font-size: 65%;
+    font-weight: 350;
+    padding: 0.1em 0.5em 0.1em 0.5em;
+}
+
+.week-picker {
+    padding-top: 8px;
+}
+
+
+.img-order {
+    margin-top: -5px;
+}
+

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/order.css') }}">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script type=text/javascript src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+
+
+    <title>添加会议室</title>
+
+</head>
+
+
+<body>
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-8 col-sm-8 col-md-offset-2 mar_bottom_20 mar_top_20">
+                <h3>添加会议室</h3>
+            </div>
+
+            {#  输入信息  #}
+            <div class="col-md-8 col-sm-8 col-md-offset-2 mar_bottom_20 mar_top_20">
+                <input type="text" class="form-control office_name" placeholder="会议室名称：(wuweizi)">
+            </div>
+
+            <div class="mar_bottom_20 col-md-8 col-md-offset-2 col-sm-8">
+                <input type="text" class="form-control office_desc"  placeholder="会议室描述:(五味子)">
+            </div>
+
+            <div class="col-md-8 col-sm-8 col-md-offset-2">
+                <button class="btn btn-primary submit btn-block">添加</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+        $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+        $(function () {
+
+            $('button.submit').click(function () {
+                let name = $('input.office_name').val();
+                if (!name) {
+                    Toast('请先输入会议室名称');
+                    return
+                }
+
+                let desc = $('input.office_desc').val();
+                if (!desc) {
+                    Toast('请先输入会议室描述');
+                    return
+                }
+
+                $.post($SCRIPT_ROOT + '/addOffice/', {
+                    name: name,
+                    desc: desc,
+                    }, function (data, status) {
+                        if (data.length > 0) {
+                            Toast(data);
+                        } else {
+                            $(location).attr('href', $SCRIPT_ROOT + '/');
+                        }
+                    }
+                );
+                
+            });
+
+            function Toast(msg, duration){
+                duration=isNaN(duration)?2000:duration;
+                var m = document.createElement('div');
+                m.innerHTML = msg;
+                m.style.cssText="margin:auto;min-width: 180px;opacity: 0.7;height: 30px;color: rgb(255, 255, 255);line-height: 30px;text-align: center;border-radius: 5px;position: fixed;top: 40%;left: 45%;z-index: 999999;background: rgb(0, 0, 0);font-size: 12px;";
+                document.body.appendChild(m);
+                setTimeout(function() {
+                    var d = 0.5;
+                    m.style.webkitTransition = '-webkit-transform ' + d + 's ease-in, opacity ' + d + 's ease-in';
+                    m.style.opacity = '0';
+                    setTimeout(function() { document.body.removeChild(m) }, d * 1000);
+                }, duration);
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>
